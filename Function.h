@@ -10,6 +10,8 @@
 #include <cmath>
 #include <stdio.h>
 #include <stdlib.h>
+#include <Vector2.h>
+#include "Matrix3x3.h"
 
 class Function {
 public:
@@ -78,6 +80,8 @@ public:
 
 	// ビューポート変換行列
 	static Matrix4x4 MakeViewportMatrix(float left, float top, float width, float height, float minDepth, float maxDepth);
+
+	Vector2 Transform(Vector2 vector, Matrix3x3 matrix);
 
 	//クロス積
 	Vector3 Cross(const Vector3& v1, const Vector3& v2);
