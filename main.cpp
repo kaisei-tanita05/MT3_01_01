@@ -20,7 +20,48 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//Function* function = new Function();
 
 	Player* player = new Player();
-	
+	player->pos_.x = 640.0f;
+	player->pos_.y = 360.0f;
+
+	// マウスでクリックされた座標
+	player->clickPos_.x = 0.0f;
+	player->clickPos_.y = 0.0f;
+
+	player->mousePos.x = 0.0f;
+	player->mousePos.y = 0.0f;
+
+	// プレイヤーの半径
+	player->radius_ = 32.0f;
+
+	// プレイヤーの速度
+	player->speed_.x = 0.0f;
+	player->speed_.y = 0.0f;
+
+	player->velocity_ = {0.0f, 0.0f};
+
+	player->draggLimit = 20.0f;
+
+	player->velocity_ = {0.0f, 0.0f};
+
+	player->dir = {0.0f, 0.0f};
+
+	player->len_ = 0.0f;
+
+	player->acceleration_ = {-50.0f, -50.0f};
+
+	player->kGravity_ = {-9.8f, -9.8f};
+
+	player->miu_ = 0.4f;
+
+	player->mass_ = 1.0f;
+
+	player->magnitude_ = 0.0f;
+
+	player->direction_ = {0.0f, 0.0f};
+
+	player->frictionalForce_ = {};
+
+
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -47,6 +88,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		player->Draw();
 
+		Novice::ScreenPrintf(0, 0, "nowMousePosition%d %d", player->mousePos.x, player->mousePos.y);
+		Novice::ScreenPrintf(0, 20, "mousClick%d", Novice::IsPressMouse(0));
+		Novice::ScreenPrintf(0, 40, "playerPosition%f %f", player->pos_.x, player->pos_.y);
 		///
 		/// ↑描画処理ここまで
 		///
@@ -62,5 +106,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの終了
 	Novice::Finalize();
+	delete player;
 	return 0;
 }

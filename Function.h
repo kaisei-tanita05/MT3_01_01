@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include <Vector2.h>
 #include "Matrix3x3.h"
+#include <chrono>
+#include <thread>
+#include <iostream>
 
 class Function {
 public:
@@ -85,6 +88,8 @@ public:
 
 	//クロス積
 	Vector3 Cross(const Vector3& v1, const Vector3& v2);
+
+	Vector2 operator+(Vector2 other);
 
 	/// <summary>
 	/// 描画関数
